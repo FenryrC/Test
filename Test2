@@ -1,0 +1,67 @@
+<dependencies>
+    <dependency>
+        <groupId>org.seleniumhq.selenium</groupId>
+        <artifactId>selenium-java</artifactId>
+        <version>4.0.0</version>
+    </dependency>
+    <dependency>
+        <groupId>org.testng</groupId>
+        <artifactId>testng</artifactId>
+        <version>7.4.0</version>
+        <scope>test</scope>
+    </dependency>
+</dependencies>
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+
+public class MyTestCase {
+
+    WebDriver driver;
+
+    @BeforeClass
+    public void setup() {
+        // Set up the ChromeDriver (make sure the path is correct)
+        System.setProperty("webdriver.chrome.driver", "path_to_chromedriver");
+        driver = new ChromeDriver();
+        driver.get("http://your-website-url.com"); // Replace with your website URL
+    }
+
+    @Test
+    public void testUIElements() {
+        // Interact with a textbox (using sendKeys)
+        WebElement textbox = driver.findElement(By.id("textbox-id")); // Replace with actual id
+        textbox.sendKeys("Test input");
+
+        // Interact with a button (using click)
+        WebElement button = driver.findElement(By.xpath("//button[@id='submit-btn']")); // Replace with actual xpath
+        button.click();
+
+        // Interact with a radio button (using click)
+        WebElement radioButton = driver.findElement(By.cssSelector("input[type='radio'][value='option1']")); // Replace with actual CSS selector
+        radioButton.click();
+
+        // Interact with a dropdown (using Select)
+        WebElement dropdown = driver.findElement(By.name("dropdown-name")); // Replace with actual name
+        Select select = new Select(dropdown);
+        select.selectByVisibleText("Option 2"); // Replace with the option text you want to select
+
+        // Assertion: Check if a specific element is displayed (example)
+        WebElement successMessage = driver.findElement(By.id("success-message"));
+        Assert.assertTrue(successMessage.isDisplayed(), "Success message not displayed!");
+    }
+
+    @AfterClass
+    public void tearDown() {
+        // Close the browser
+        driver.quit();
+    }
+}
+
