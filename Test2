@@ -64,4 +64,22 @@ public class MyTestCase {
         driver.quit();
     }
 }
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="UI Test Suite">
+    <test name="Test Case 1">
+        <classes>
+            <class name="MyTestCase"/>
+        </classes>
+    </test>
+    <test name="Test Case 2">
+        <classes>
+            <class name="MyTestCase"/>
+        </classes>
+    </test>
+    <test name="Test Case 3">
+        <classes>
+            <class name="MyTestCase"/>
+        </classes>
+    </test>
+</suite>
 
