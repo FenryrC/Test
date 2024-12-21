@@ -1,0 +1,16 @@
+ls
+mkdir 
+vi .java
+
+Dockerfile
+
+docker build -t abc .
+docker run -it abc
+docker ps
+git clone 
+cd 
+git status
+git add .
+git status 
+git commit 
+git push
